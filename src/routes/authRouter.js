@@ -5,9 +5,7 @@ const router = express.Router();
 
 // Google Auth
 router.get('/google', authController.googleAuth);
-router.get('/google/callback', authController.googleAuthCallback, (req, res) => {
-    res.redirect('/');
-});
+router.get('/google/callback', authController.googleAuthCallback, authController.handleGoogleCallback);
 
 // GitHub Auth
 router.get('/github', authController.githubAuth);

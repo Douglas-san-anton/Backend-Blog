@@ -26,10 +26,10 @@ export const createPost = async (req, res) => {
         const post = {
             title: req.body.title,
             content: req.body.content,
-            author: req.user.username,
+            author: req.user.username,  // Asegúrate de que req.user.username está disponible
         };
         const newPost = await postService.createPost(post);
-        res.status(201).json(newPost);
+        res.status(201).json({ newPost, message: 'Post created' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
